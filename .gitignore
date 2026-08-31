@@ -1,0 +1,20 @@
+# Vivado generated
+*.cache/
+*.runs/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.sim/
+.Xil/
+
+# Vivado journal/log
+*.jou
+*.log
+*.str
+*.backup.jou
+*.backup.log
+
+# Keep sources, constraints, project file, waveform configs
+!*.xpr
+!*.xdc
+!*.wcfg
