@@ -1,0 +1,7 @@
+0.7
+2020.2
+Jun 16 2026
+11:12:08
+/home/jerry/DDS/DDS.sim/sim_1/behav/xsim/glbl.v,1773749341,verilog,,,,glbl,,,,,,,,
+/home/jerry/DDS/DDS.srcs/sources_1/new/Top_Module.v,1787665458,verilog,,/home/jerry/DDS/DDS.srcs/sources_1/new/Top_Module_tb.v,,Top_Module,,,../../../../../../../opt/Xilinx/2026.1/data/rsb/busdef,,,,,
+/home/jerry/DDS/DDS.srcs/sources_1/new/Top_Module_tb.v,1787584896,verilog,,,,SinGen_FSM_tb,,,../../../../../../../opt/Xilinx/2026.1/data/rsb/busdef,,,,,

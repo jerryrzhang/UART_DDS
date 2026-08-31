@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Product Version: Vivado v2026.1 (64-bit)                                     -->
+<!--                                                                              -->
+<!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                        -->
+<!-- Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.        -->
+
+<hwsession version="1" minor="2">
+  <device name="xc7a35t_0" gui_info="dashboard1=hw_ila_1[xc7a35t_0/hw_ila_1/Settings=ILA_SETTINGS_1;xc7a35t_0/hw_ila_1/Status=ILA_STATUS_1;xc7a35t_0/hw_ila_1/Trigger Setup=ILA_TRIGGER_1;xc7a35t_0/hw_ila_1/Waveform=ILA_WAVE_1;xc7a35t_0/hw_ila_1/Capture Setup=ILA_CAPTURE_1;]"/>
+  <ObjectList object_type="hw_device" gui_info="">
+    <Object name="xc7a35t_0" gui_info="">
+      <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/Top_Module.ltx"/>
+      <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/Top_Module.ltx"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/Top_Module.bit"/>
+      <Properties Property="SLR.COUNT" value="1"/>
+    </Object>
+  </ObjectList>
+  <ObjectList object_type="hw_ila" gui_info="">
+    <Object name="my_ila" gui_info="">
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
+  </ObjectList>
+  <probeset name="hw project" active="false">
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq12&apos;hXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq12&apos;hXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe2[11:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq12&apos;hXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="phase[31]"/>
+        <net name="phase[30]"/>
+        <net name="phase[29]"/>
+        <net name="phase[28]"/>
+        <net name="phase[27]"/>
+        <net name="phase[26]"/>
+        <net name="phase[25]"/>
+        <net name="phase[24]"/>
+        <net name="phase[23]"/>
+        <net name="phase[22]"/>
+        <net name="phase[21]"/>
+        <net name="phase[20]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq32&apos;hXXXX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe1[31:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="phase_1[31]"/>
+        <net name="phase_1[30]"/>
+        <net name="phase_1[29]"/>
+        <net name="phase_1[28]"/>
+        <net name="phase_1[27]"/>
+        <net name="phase_1[26]"/>
+        <net name="phase_1[25]"/>
+        <net name="phase_1[24]"/>
+        <net name="phase_1[23]"/>
+        <net name="phase_1[22]"/>
+        <net name="phase_1[21]"/>
+        <net name="phase_1[20]"/>
+        <net name="phase_1[19]"/>
+        <net name="phase_1[18]"/>
+        <net name="phase_1[17]"/>
+        <net name="phase_1[16]"/>
+        <net name="phase_1[15]"/>
+        <net name="phase_1[14]"/>
+        <net name="phase_1[13]"/>
+        <net name="phase_1[12]"/>
+        <net name="phase_1[11]"/>
+        <net name="phase_1[10]"/>
+        <net name="phase_1[9]"/>
+        <net name="phase_1[8]"/>
+        <net name="phase_1[7]"/>
+        <net name="phase_1[6]"/>
+        <net name="phase_1[5]"/>
+        <net name="phase_1[4]"/>
+        <net name="phase_1[3]"/>
+        <net name="phase_1[2]"/>
+        <net name="phase_1[1]"/>
+        <net name="phase_1[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq16&apos;hXXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq16&apos;hXXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe0[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq16&apos;hXXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Analog"/>
+      </probeOptions>
+      <nets>
+        <net name="sin[15]"/>
+        <net name="sin[14]"/>
+        <net name="sin[13]"/>
+        <net name="sin[12]"/>
+        <net name="sin[11]"/>
+        <net name="sin[10]"/>
+        <net name="sin[9]"/>
+        <net name="sin[8]"/>
+        <net name="sin[7]"/>
+        <net name="sin[6]"/>
+        <net name="sin[5]"/>
+        <net name="sin[4]"/>
+        <net name="sin[3]"/>
+        <net name="sin[2]"/>
+        <net name="sin[1]"/>
+        <net name="sin[0]"/>
+      </nets>
+    </probe>
+  </probeset>
+</hwsession>
