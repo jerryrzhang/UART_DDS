@@ -1,7 +1,0 @@
-verilog xil_defaultlib -i "../../../../../../../opt/Xilinx/2026.1/data/rsb/busdef" --include "../../../../DDS.gen/sources_1/ip/ila_0/hdl/verilog" \
-"../../../../DDS.gen/sources_1/ip/ila_0/sim/ila_0.v" \
-
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort
