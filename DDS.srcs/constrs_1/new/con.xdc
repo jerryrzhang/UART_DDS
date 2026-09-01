@@ -28,7 +28,7 @@ set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports {sw[15]}
 
 
 ## LEDs
-#set_property -dict { PACKAGE_PIN U16   IOSTANDARD LVCMOS33 } [get_ports {led[0]}]
+set_property -dict { PACKAGE_PIN U16   IOSTANDARD LVCMOS33 } [get_ports temp]
 #set_property -dict { PACKAGE_PIN E19   IOSTANDARD LVCMOS33 } [get_ports {led[1]}]
 #set_property -dict { PACKAGE_PIN U19   IOSTANDARD LVCMOS33 } [get_ports {led[2]}]
 #set_property -dict { PACKAGE_PIN V19   IOSTANDARD LVCMOS33 } [get_ports {led[3]}]
@@ -47,32 +47,32 @@ set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports {sw[15]}
 
 
 ##7 segment display
-set_property PACKAGE_PIN W7 [get_ports {seg_L[0]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[0]}]
-set_property PACKAGE_PIN W6 [get_ports {seg_L[1]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[1]}]
-set_property PACKAGE_PIN U8 [get_ports {seg_L[2]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[2]}]
-set_property PACKAGE_PIN V8 [get_ports {seg_L[3]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[3]}]
-set_property PACKAGE_PIN U5 [get_ports {seg_L[4]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[4]}]
-set_property PACKAGE_PIN V5 [get_ports {seg_L[5]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[5]}]
-set_property PACKAGE_PIN U7 [get_ports {seg_L[6]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {seg_L[6]}]
+set_property PACKAGE_PIN W7 [get_ports {seg[0]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[0]}]
+set_property PACKAGE_PIN W6 [get_ports {seg[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[1]}]
+set_property PACKAGE_PIN U8 [get_ports {seg[2]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[2]}]
+set_property PACKAGE_PIN V8 [get_ports {seg[3]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[3]}]
+set_property PACKAGE_PIN U5 [get_ports {seg[4]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[4]}]
+set_property PACKAGE_PIN V5 [get_ports {seg[5]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[5]}]
+set_property PACKAGE_PIN U7 [get_ports {seg[6]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {seg[6]}]
 
 #set_property PACKAGE_PIN V7 [get_ports dp]
 	#set_property IOSTANDARD LVCMOS33 [get_ports dp]
 
-set_property PACKAGE_PIN U2 [get_ports {anode_L[0]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {anode_L[0]}]
-set_property PACKAGE_PIN U4 [get_ports {anode_L[1]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {anode_L[1]}]
-set_property PACKAGE_PIN V4 [get_ports {anode_L[2]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {anode_L[2]}]
-set_property PACKAGE_PIN W4 [get_ports {anode_L[3]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {anode_L[3]}]
+set_property PACKAGE_PIN U2 [get_ports {an[0]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {an[0]}]
+set_property PACKAGE_PIN U4 [get_ports {an[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {an[1]}]
+set_property PACKAGE_PIN V4 [get_ports {an[2]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {an[2]}]
+set_property PACKAGE_PIN W4 [get_ports {an[3]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {an[3]}]
 
 
 
@@ -143,7 +143,7 @@ set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports rst]
 
 
 ##USB-RS232 Interface
-#set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports RsRx]
+set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports data]
 #set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports RsTx]
 
 

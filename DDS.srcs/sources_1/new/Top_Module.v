@@ -22,13 +22,15 @@
 
 module Top_Module(
     input clk, rst, data,
-    input [15:0] sw
+    input [15:0] sw,
+    output reg temp,
+    output [6:0] seg,
+    output [3:0] an
     );
     reg signed [15:0] sin;
     reg signed [15:0] LUT [0:1023];
     integer i;    
     reg [15:0] SevSeg; 
-    wire rst_disp, rst_rx;
     wire [7:0] rx_byte;
     wire rx_done;
 
@@ -41,14 +43,16 @@ module Top_Module(
     
     seg7_debug display (
         .clk(clk),
-        .rst(rst_disp),
-        .value(SevSeg)
+        .rst(rst),
+        .value(SevSeg),
+        .seg(seg),
+        .an(an)
     );    
     
     UART rx (
         .data(data),
         .clk(clk),
-        .rst(rst_rx),
+        .rst(rst),
         .rx_byte(rx_byte),
         .done(rx_done)
     );
@@ -83,6 +87,20 @@ module Top_Module(
     
     assign FTW = {sw[15:0], {16'd0}};
     
+    reg  [25:0] count1;
+    
+    
+    always @(posedge clk) begin
+        if (count1 == 25'd30000000) begin
+            count1 <= 0;
+            temp <= 0;
+        end else count1 <= count1 + 1;
+        if (rx_done == 1) begin
+            count1 <= 0;
+            temp <= 1;
+        end
+        
+    end
     
     reg [31:0] phase;
     wire [11:0] LUTIndex;

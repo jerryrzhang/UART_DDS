@@ -53,6 +53,7 @@ module UART(
                 IDLE: begin
                     counter1 <= 0;
                     rx_bit <= 0;
+                    done <= 0;
                     if (ff2 == 0) st <= START;
                 end
                 START: begin
