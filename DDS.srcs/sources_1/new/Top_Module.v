@@ -21,20 +21,37 @@
 
 
 module Top_Module(
-    input clk, rst,
+    input clk, rst, data,
     input [15:0] sw
     );
     reg signed [15:0] sin;
     reg signed [15:0] LUT [0:1023];
     integer i;    
+    reg [15:0] SevSeg; 
+    wire rst_disp, rst_rx;
+    wire [7:0] rx_byte;
+    wire rx_done;
 
     ila_0 my_ila (
-        .clk    (clk),           // MUST be your 100 MHz design clock
-        .probe0 (sin),           // 16-bit
-        .probe1 (phase),         // 32-bit
-        .probe2 (LUTIndex)       // 12-bit
+        .clk(clk),           // design clock
+        .probe0(sin),           // 16-bit
+        .probe1(phase),         // 32-bit
+        .probe2(LUTIndex)       // 12-bit
     );
     
+    seg7_debug display (
+        .clk(clk),
+        .rst(rst_disp),
+        .value(SevSeg)
+    );    
+    
+    UART rx (
+        .data(data),
+        .clk(clk),
+        .rst(rst_rx),
+        .rx_byte(rx_byte),
+        .done(rx_done)
+    );
     
     
 
@@ -83,6 +100,7 @@ module Top_Module(
             2'd3: sin <= -LUT[1023 - LUTIndex[9:0]];
         endcase
         
+        if (rx_done) SevSeg[7:0] <= rx_byte;
     end
     
 //    always @(*) begin
