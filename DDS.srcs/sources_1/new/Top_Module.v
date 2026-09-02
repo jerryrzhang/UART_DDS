@@ -27,13 +27,20 @@ module Top_Module(
     output [6:0] seg,
     output [3:0] an
     );
-    reg signed [15:0] sin;
-    reg signed [15:0] LUT [0:1023];
-    integer i;    
+    wire signed [15:0] sin;
     reg [15:0] SevSeg; 
     wire [7:0] rx_byte;
     wire rx_done;
+    wire [31:0] phase;
 
+
+    reg [31:0] FTW;
+    
+    initial begin
+        FTW = 32'd42949673; 
+    end
+    
+    
     ila_0 my_ila (
         .clk(clk),           // design clock
         .probe0(sin),           // 16-bit
@@ -57,80 +64,46 @@ module Top_Module(
         .done(rx_done)
     );
     
+    DDS synth (
+        .clk(clk),
+        .rst(rst),
+        .sin(sin),
+        .phase(phase),
+        .rx_byte(rx_byte),
+        .rx_done(rx_done)
+    );
     
-
-    initial begin
-
-        for (i = 0; i < 1024; i = i + 1) begin
-            // each step is pi/2^11
-            // i * pi/2^11 is the angle in rads
-            // $sin(i * pi/2^11) is the sin value
-            // we should generate from 0 -> pi/2 over the 1024 entries of the array
-            
-            // pi we can use 2*$acos(0)
-            
-            
-            //we take pi/2^10, step size
-            // multiply it by i, the current step
-            // sine it
-            // multpily that real value by the range (2^15), and add 0.5
-            // floor it
-            LUT[i] = $rtoi( $sin(($acos(0)/(2**10)) * i) * (2**15 - 1) + 0.5 );
-            
+    reg [1:0] byte_num;
+    reg process_done;
+    always @(posedge clk) begin
+        process_done <= 0;
+        if (rx_done) begin
+            case (byte_num)
+                2'd0: FTW[7:0] <= rx_byte;
+                2'd1: FTW[15:8] <= rx_byte;
+                2'd2: FTW[23:16] <= rx_byte;
+                2'd3: begin
+                    FTW[31:24] <= rx_byte;
+                    process_done <= 1;
+                end
+            endcase
+            byte_num <= byte_num + 1;
         end
         
-    end
-    
-    wire [31:0] FTW;
-
-    //assign FTW = 32'd42949673;   // ≈ 1 MHz  (round(1e6 × 2^32 / 100e6))
-    
-    assign FTW = {sw[15:0], {16'd0}};
-    
-    reg  [25:0] count1;
-    
-    
-    always @(posedge clk) begin
         if (count1 == 25'd30000000) begin
             count1 <= 0;
             temp <= 0;
         end else count1 <= count1 + 1;
-        if (rx_done == 1) begin
+        if (process_done == 1) begin
             count1 <= 0;
             temp <= 1;
         end
         
-    end
-    
-    reg [31:0] phase;
-    wire [11:0] LUTIndex;
-    
-    assign LUTIndex = phase[31:20];
-    
-    always @(posedge clk) begin
-        if (rst) phase <= 32'd0;
-        else phase <= phase + FTW;
-        
-        case (LUTIndex[11:10])
-            2'd0: sin <= LUT[LUTIndex[9:0]];
-            2'd1: sin <= LUT[1023 - LUTIndex[9:0]];
-            2'd2: sin <= -LUT[LUTIndex[9:0]];
-            2'd3: sin <= -LUT[1023 - LUTIndex[9:0]];
-        endcase
-        
         if (rx_done) SevSeg[7:0] <= rx_byte;
-    end
+        
+        
+    end 
     
-//    always @(*) begin
-//        // assign output to sin value from LUT depending on first two bits
-//        case (LUTIndex[11:10])
-//            2'd0: sin = LUT[LUTIndex[9:0]];
-//            2'd1: sin = LUT[1023 - LUTIndex[9:0]];
-//            2'd2: sin = -LUT[LUTIndex[9:0]];
-//            2'd3: sin = -LUT[1023 - LUTIndex[9:0]];
-//        endcase
-//    end
-    
-    
-    
+    reg  [25:0] count1;
+
 endmodule
