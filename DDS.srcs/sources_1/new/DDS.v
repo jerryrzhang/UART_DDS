@@ -22,7 +22,7 @@
 
 module DDS(
         input clk, rst,
-//        input [31:0] FTW,
+        input [31:0] FTW,
         output reg signed [15:0] sin,
         output reg [31:0] phase,
         output [7:0] rx_byte,
@@ -30,8 +30,8 @@ module DDS(
     );
     
     
-    wire FTW1; 
-    assign FTW1 = 32'd42949673; 
+//    wire FTW1; 
+//    assign FTW1 = 32'd42949673; 
     
     reg signed [15:0] LUT [0:1023];
     integer i;    
@@ -64,7 +64,7 @@ module DDS(
     always @(posedge clk) begin
     
         if (rst) phase <= 32'd0;
-        else phase <= phase + 32'd42949673;
+        else phase <= phase + FTW;
         
         case (LUTIndex[11:10])
             2'd0: sin <= LUT[LUTIndex[9:0]];

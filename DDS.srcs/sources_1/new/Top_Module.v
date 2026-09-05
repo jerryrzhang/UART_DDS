@@ -70,7 +70,8 @@ module Top_Module(
         .sin(sin),
         .phase(phase),
         .rx_byte(rx_byte),
-        .rx_done(rx_done)
+        .rx_done(rx_done),
+        .FTW(FTW)
     );
     
     reg [1:0] byte_num;
@@ -90,7 +91,7 @@ module Top_Module(
             byte_num <= byte_num + 1;
         end
         
-        if (count1 == 25'd30000000) begin
+        if (count1 == 25'd9000000) begin
             count1 <= 0;
             temp <= 0;
         end else count1 <= count1 + 1;
