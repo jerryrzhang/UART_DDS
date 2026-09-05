@@ -54,6 +54,7 @@ module UART(
                     counter1 <= 0;
                     rx_bit <= 0;
                     done <= 0;
+                    rx_byte <= 0;
                     if (ff2 == 0) st <= START;
                 end
                 START: begin
@@ -69,10 +70,11 @@ module UART(
                 DATA: begin
                     if (counter1 == 16'd867) begin
                         rx_byte[rx_bit] <= ff2;
-                        rx_bit <= rx_bit + 1;
+                       
                         counter1 <= 0;
                         
-                        if (rx_bit == 4'd8) st <= STOP;
+                        if (rx_bit == 4'd7) st <= STOP;
+                        else rx_bit <= rx_bit + 1;
                         
                     end else counter1 <= counter1 + 1 ;
                 end

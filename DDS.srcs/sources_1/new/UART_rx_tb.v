@@ -53,6 +53,16 @@ module UART_rx_tb();
         #8681 data = 1;
         #8681 data = 0;
         #8681 data = 1;
+        #8681 data = 0;
+        #8681 data = 0;
+        #8681 data = 0;
+        #8681 data = 0;
+        #8681 data = 1;
+        #8681 data = 1;
+        #8681 data = 0;
+        #8681 data = 1;
+        #8681 data = 0;
+        #8681 data = 1;
         
         #(8681*2) $finish();
     end
