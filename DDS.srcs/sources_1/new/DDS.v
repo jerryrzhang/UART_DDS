@@ -24,9 +24,7 @@ module DDS(
         input clk, rst,
         input [31:0] FTW,
         output reg signed [15:0] sin,
-        output reg [31:0] phase,
-        output [7:0] rx_byte,
-        output rx_done
+        output reg [31:0] phase
     );
     
     
@@ -34,6 +32,9 @@ module DDS(
 //    assign FTW1 = 32'd42949673; 
     
     reg signed [15:0] LUT [0:1023];
+    /* verilator lint_off UNUSEDSIGNAL */
+    reg signed [31:0] temp; //upper bits are always 0, max 32767
+    /* verilator lint_on UNUSEDSIGNAL */
     integer i;    
     initial begin
     
@@ -51,8 +52,9 @@ module DDS(
             // sine it
             // multpily that real value by the range (2^15), and add 0.5
             // floor it
-            LUT[i] = $rtoi( $sin(($acos(0)/(2**10)) * i) * (2**15 - 1) + 0.5 );
             
+            temp = $rtoi( $sin(($acos(0)/(2**10)) * i) * (2**15 - 1) + 0.5 );
+            LUT[i] = temp[15:0];
         end
         
     end
