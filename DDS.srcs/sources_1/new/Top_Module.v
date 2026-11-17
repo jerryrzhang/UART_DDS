@@ -69,8 +69,6 @@ module Top_Module(
         .rst(rst),
         .sin(sin),
         .phase(phase),
-        .rx_byte(rx_byte),
-        .rx_done(rx_done),
         .FTW(FTW)
     );
     
