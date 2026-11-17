@@ -28,7 +28,7 @@ module Top_Module(
     output [3:0] an
     );
     wire signed [15:0] sin;
-    reg [15:0] SevSeg; 
+    reg [3:0] sev_offset; 
     wire [7:0] rx_byte;
     wire rx_done;
     wire [31:0] phase;
@@ -48,10 +48,10 @@ module Top_Module(
         .probe2(LUTIndex)       // 12-bit
     );
     
-    seg7_debug display (
+    seg7 display (
         .clk(clk),
         .rst(rst),
-        .value(SevSeg),
+        .offset(sev_offset),
         .seg(seg),
         .an(an)
     );    
@@ -98,7 +98,7 @@ module Top_Module(
             temp <= 1;
         end
         
-        if (rx_done) SevSeg[7:0] <= rx_byte;
+        if (rx_done) sev_offset <= sev_offset + 1;
         
         
     end 
