@@ -23,12 +23,12 @@
 module UART(
     input rst, clk, data,
     output reg [7:0] rx_byte,
-    output reg done,
-    output reg [1:0] st,
-    output reg [15:0] counter1,
-    output reg [3:0] rx_bit
+    output reg done
     );
     
+    reg [2:0] rx_bit;
+    reg [1:0] st;
+    reg [15:0] counter1;
 
     parameter IDLE = 2'd0, START = 2'd1, DATA = 2'd2, STOP = 2'd3; 
     
@@ -73,7 +73,7 @@ module UART(
                        
                         counter1 <= 0;
                         
-                        if (rx_bit == 4'd7) st <= STOP;
+                        if (rx_bit == 3'd7) st <= STOP;
                         else rx_bit <= rx_bit + 1;
                         
                     end else counter1 <= counter1 + 1 ;

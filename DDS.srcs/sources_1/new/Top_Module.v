@@ -22,16 +22,16 @@
 
 module Top_Module(
     input clk, rst, data,
-    input [15:0] sw,
     output reg temp,
     output [6:0] seg,
-    output [3:0] an
+    output [3:0] an,
+    output signed [15:0] sin,
+    output [31:0] phase
     );
-    wire signed [15:0] sin;
-    reg [3:0] sev_offset; 
+
+    reg [1:0] sev_offset; 
     wire [7:0] rx_byte;
     wire rx_done;
-    wire [31:0] phase;
 
     reg [31:0] FTW;
     
@@ -39,15 +39,7 @@ module Top_Module(
         FTW = 32'd42949673; 
     end
     
-    
-    ila_0 my_ila (
-        .clk(clk),           // design clock
-        .probe0(sin),           // 16-bit
-        .probe1(phase),         // 32-bit
-        .probe2(LUTIndex)       // 12-bit
-    );
-    
-    seg7 display (
+    Seven_Seg display (
         .clk(clk),
         .rst(rst),
         .offset(sev_offset),
@@ -95,8 +87,13 @@ module Top_Module(
         end else begin
             count <= count + 1;
         end
-            
-        
+    end
+
+
+    //receive light hold signal
+    reg  [24:0] count1;
+    always @(posedge clk) begin    
+
         if (count1 == 25'd9000000) begin
             count1 <= 0;
             temp <= 0;
@@ -104,13 +101,10 @@ module Top_Module(
         if (process_done == 1) begin
             count1 <= 0;
             temp <= 1;
-        end
-        
-//        if (rx_done) sev_offset <= sev_offset + 1;
-        
+        end        
         
     end 
     
-    reg  [25:0] count1;
+
 
 endmodule
