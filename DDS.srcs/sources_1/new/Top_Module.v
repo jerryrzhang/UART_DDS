@@ -89,7 +89,7 @@ module Top_Module(
             byte_num <= byte_num + 1;
         end
         
-        if (count >= FTW[31:2]) begin
+        if (count >= ~FTW[31:2]) begin
             count <= 0;
             sev_offset <= sev_offset + 1;
         end else begin
