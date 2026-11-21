@@ -33,7 +33,6 @@ module Top_Module(
     wire rx_done;
     wire [31:0] phase;
 
-
     reg [31:0] FTW;
     
     initial begin
@@ -74,6 +73,7 @@ module Top_Module(
     
     reg [1:0] byte_num;
     reg process_done;
+    reg [29:0] count;
     always @(posedge clk) begin
         process_done <= 0;
         if (rx_done) begin
@@ -89,6 +89,14 @@ module Top_Module(
             byte_num <= byte_num + 1;
         end
         
+        if (count >= FTW[31:2]) begin
+            count <= 0;
+            sev_offset <= sev_offset + 1;
+        end else begin
+            count <= count + 1;
+        end
+            
+        
         if (count1 == 25'd9000000) begin
             count1 <= 0;
             temp <= 0;
@@ -98,7 +106,7 @@ module Top_Module(
             temp <= 1;
         end
         
-        if (rx_done) sev_offset <= sev_offset + 1;
+//        if (rx_done) sev_offset <= sev_offset + 1;
         
         
     end 
