@@ -18,3 +18,27 @@
 !*.xpr
 !*.xdc
 !*.wcfg
+
+# Verilator
+obj_dir/
+
+# cocotb
+sim_build/
+results.xml
+
+# Waveforms
+*.vcd
+*.fst
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Editors
+*.swp
+*.swo
+
+# Future scripted build output
+build/
