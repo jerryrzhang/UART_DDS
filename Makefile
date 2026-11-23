@@ -10,12 +10,15 @@ RTL    := $(wildcard rtl/*.v)
 XDC    := constraints/con.xdc
 SCRIPT := scripts/build_artix_7.tcl
 
-.PHONY: all lint bit clean
+.PHONY: all lint test bit clean
 
 all: bit
 
 lint:
 	verilator --lint-only -Wall -Irtl --top-module $(TOP) $(RTL)
+
+test:
+	cd tb && uv run pytest
 
 bit: $(BUILD)/artix7/dds.bit
 

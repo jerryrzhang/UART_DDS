@@ -456,12 +456,20 @@ dependencies = [
     { name = "numpy" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "cocotb" },
     { name = "matplotlib" },
     { name = "numpy" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=9.2.0" }]
 
 [[package]]
 name = "tzdata"
