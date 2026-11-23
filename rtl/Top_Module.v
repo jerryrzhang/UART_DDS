@@ -23,10 +23,9 @@
 module Top_Module(
     input clk, rst, data,
     output reg temp,
-    output [6:0] seg,
-    output [3:0] an,
     output signed [15:0] sin,
-    output [31:0] phase
+    output [6:0] seg,
+    output [3:0] an
     );
 
     reg [1:0] sev_offset; 
