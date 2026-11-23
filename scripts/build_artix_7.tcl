@@ -3,13 +3,13 @@
 
 
 set here [file dirname [file normalize [info script]]]
-set root [file normalize "$here/.."]
+set root [file normalize $here/..]
 
 
 # arguements from the makefile. Basys 3 board by default
-set part [expr {[llength $argv] > 0 [lindex $argv 0] : "xc7a35tcpg236-1"}] 
-set topModule [expr {[llength $argv] > 0 [lindex $argv 1] : "Top_Module"}]
-set outputDir [expr {[llength $argv] > 0 [lindex $argv 2] : "$root/build/artix7"}] 
+set part [expr {[llength $argv] > 0 ? [lindex $argv 0] : "xc7a35tcpg236-1"}] 
+set topModule [expr {[llength $argv] > 0 ? [lindex $argv 1] : "Top_Module"}]
+set outputDir [expr {[llength $argv] > 0 ? [lindex $argv 2] : "$root/build/artix7"}] 
 
 set rpt $outputDir/reports
 set dcp $outputDir/checkpoints
@@ -54,7 +54,7 @@ if {$wns eq ""} {
     error "No timing paths found. Clock may be constrained. Design might have been optimized away."
 }
 set period [get_property PERIOD [lindex [get_clocks] 0]]
-puts [format "TIMING: WNS = %.3f ns, WHS = %.3f ns, est. Fmax = %.1f MHz" $wns $whs [expr {1000.0 / $period - $wns)}]]
+puts [format "TIMING: WNS = %.3f ns, WHS = %.3f ns, est. Fmax = %.1f MHz" $wns $whs [expr {1000.0 / ($period - $wns)}]]
 
 if {$wns < 0 || $whs < 0} {
     error "Timing not met."
