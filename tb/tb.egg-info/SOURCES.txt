@@ -1,8 +1,0 @@
-README.md
-main.py
-pyproject.toml
-tb.egg-info/PKG-INFO
-tb.egg-info/SOURCES.txt
-tb.egg-info/dependency_links.txt
-tb.egg-info/requires.txt
-tb.egg-info/top_level.txt
